@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 import Colors from '../../styles/Colors';
 import FontSizes from '../../styles/FontSizes';
+import Icon from 'react-native-vector-icons/Feather';
 
 type Props = TouchableOpacityProps & {
   text: string;
   onPress?: (arg?: any) => void;
   style?: ViewStyle;
+  icon?: string;
   textStyle?: TextStyle;
   disabled?: boolean;
   colorModifier?:
@@ -21,11 +23,13 @@ type Props = TouchableOpacityProps & {
     | 'cancel'
     | 'complementary'
     | 'success'
+    | 'error'
     | 'underlined';
 };
 
 export const CustomButton = React.memo((props: Props) => {
   const appliedStyles: ViewStyle[] = [styles.button];
+  appliedStyles.push(styles.row);
   if (props.disabled) {
     appliedStyles.push(styles.disabled);
   }
@@ -52,12 +56,17 @@ export const CustomButton = React.memo((props: Props) => {
   }
 
   return (
-    <TouchableOpacity
-      style={appliedStyles}
-      onPress={props.onPress}
-      disabled={props.disabled}>
-      <Text style={textStyles}>{props.text}</Text>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity
+        style={appliedStyles}
+        onPress={props.onPress}
+        disabled={props.disabled}>
+        {props.icon && (
+          <Icon style={styles.icon} name={props.icon} size={20} color="#ffff" />
+        )}
+        <Text style={textStyles}>{props.text}</Text>
+      </TouchableOpacity>
+    </>
   );
 });
 
@@ -68,10 +77,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    paddingHorizontal: 16,
   },
   text: {
     fontSize: FontSizes.default,
-    paddingHorizontal: 20,
     color: 'white',
   },
   textColorPrimary: {
@@ -85,6 +94,12 @@ const styles = StyleSheet.create({
   },
   confirm: {
     backgroundColor: Colors.primary,
+  },
+  error: {
+    backgroundColor: Colors.error,
+  },
+  icon: {
+    paddingRight: 10,
   },
   cancel: {
     borderColor: Colors.primary,
@@ -102,5 +117,8 @@ const styles = StyleSheet.create({
   },
   underlined: {
     borderWidth: 0,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });

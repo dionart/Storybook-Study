@@ -5,13 +5,9 @@
 
 function loadStories() {
   require('./stories/index');
-  require('../src/components/CustomButton/CustomButton.stories');
 }
 
-const stories = [
-  './stories/index',
-  '../src/components/CustomButto/CustomButton.stories',
-];
+const stories = ['./stories/index'];
 
 module.exports = {
   loadStories,
