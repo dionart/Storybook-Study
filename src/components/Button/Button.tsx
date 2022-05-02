@@ -102,7 +102,7 @@ const Container = styled.TouchableOpacity<ButtonThemeProps>`
   padding: 16px;
   border-radius: 4px;
   align-items: center;
-  width: 100%;
+  width: 353px;
   justify-content: center;
   elevation: 5;
   ${({variant = 'primary', disabled}) => {
