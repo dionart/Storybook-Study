@@ -3,9 +3,9 @@ import { Text } from 'react-native';
 import { BottomCardContainer } from './styles';
 
 interface BottomCardProps{
-  header: any,
-  content: any,
-  footer: any
+  header?: any,
+  content?: any,
+  footer?: any
 }
 
 export const BottomCard: React.FC<BottomCardProps> = ({

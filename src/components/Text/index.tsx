@@ -70,28 +70,25 @@ const VariantStyles: Record<DesignTexts, any> = {
 };
 
 export const Text = styled.Text<TextProps>`
-  ${({type}) => {
-    if (type) {
-      return VariantStyles[type]
-    }
-    return 
-  }}
-  /* color: ${({color = theme.colors.neutral['700']}) => color}; */
-  color: #fff;
+  color: ${({color = '#000'}) => color};
 
-  /* font-size: ${({size = 16}) => size}px;
-  font-family: ${({weight = 'regular'}) => theme.text.weight[weight]};
-  font-family: 500 ;
+  font-size: ${({size = 16}) => size}px;
+  /* font-family: ${({weight = 'regular'}) => weight}; */
   opacity: ${({opacity = 1}) => opacity};
-  text-transform: ${({textTransform = 'none'}) => textTransform}; */
-
+  text-transform: ${({textTransform = 'none'}) => textTransform};
+  
   /* Margin */
   margin-top: ${({marginTop = 0}) => marginTop}px;
   margin-right: ${({marginRight = 0}) => marginRight}px;
   margin-bottom: ${({marginBottom = 0}) => marginBottom}px;
   margin-left: ${({marginLeft = 0}) => marginLeft}px;
-
   text-align: ${props => props.align || 'auto'};
+
+  ${({type}) => {
+    if (type) {
+      return VariantStyles[type]
+    }
+  }}
 `;
 
 export default Text;
